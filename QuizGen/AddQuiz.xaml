@@ -1,0 +1,45 @@
+﻿<Page x:Class="quiz_generator.AddQuiz"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:quiz_generator"
+      xmlns:ViewModel="clr-namespace:QuizGen.ViewModel"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="AddQuiz">
+
+    <Grid>
+        <Grid.DataContext>
+            <ViewModel:AddQuiz/>
+        </Grid.DataContext>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="221*"/>
+            <ColumnDefinition Width="179*"/>
+        </Grid.ColumnDefinitions>
+        <ListBox d:ItemsSource="{d:SampleData ItemCount=5}" Margin="97,65,51,90" Grid.Column="1" ItemsSource="{Binding Questions}" DisplayMemberPath="Body" SelectedItem="{Binding SelectedQuestion}"/>
+        <Label Content="Dodane pytania" HorizontalAlignment="Left" Margin="97,27,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+        <Label Content="Dodaj nowy quiz:&#xD;&#xA;" HorizontalAlignment="Left" Margin="26,18,0,0" VerticalAlignment="Top" FontSize="20" Height="35" Width="194"/>
+        <TextBox HorizontalAlignment="Left" Margin="24,105,0,0" TextWrapping="Wrap" Text="{Binding Question}" VerticalAlignment="Top" Width="345"/>
+        <TextBox HorizontalAlignment="Left" Margin="24,154,0,0" TextWrapping="Wrap" Text="{Binding Answers[0]}" VerticalAlignment="Top" Width="345"/>
+        <TextBox HorizontalAlignment="Left" Margin="24,206,0,0" TextWrapping="Wrap" Text="{Binding Answers[1]}" VerticalAlignment="Top" Width="345"/>
+        <TextBox HorizontalAlignment="Left" Margin="24,259,0,0" TextWrapping="Wrap" Text="{Binding Answers[2]}" VerticalAlignment="Top" Width="345"/>
+        <Button Command="{Binding AddQuestionCommand}" Content="Dodaj pytanie" HorizontalAlignment="Left" Margin="137,347,0,0" VerticalAlignment="Top" Width="232"/>
+        <TextBox HorizontalAlignment="Left" Margin="24,307,0,0" TextWrapping="Wrap" Text="{Binding Answers[3]}" VerticalAlignment="Top" Width="345"/>
+        <Label Content="Pytanie:" HorizontalAlignment="Left" Margin="24,74,0,0" VerticalAlignment="Top"/>
+        <Label Content="Odpowiedź 1:" HorizontalAlignment="Left" Margin="24,128,0,0" VerticalAlignment="Top"/>
+        <Label Content="Odpowiedź 2:" HorizontalAlignment="Left" Margin="24,177,0,0" VerticalAlignment="Top"/>
+        <Label Content="Odpowiedź 3:" HorizontalAlignment="Left" Margin="24,229,0,0" VerticalAlignment="Top"/>
+        <Label Content="Odpowiedź 4:" HorizontalAlignment="Left" Margin="24,281,0,0" VerticalAlignment="Top"/>
+
+        <CheckBox IsChecked="{Binding CorrectAnswers[3]}" CommandParameter="rb4" Content="Prawidłowa" Name="rb4" HorizontalAlignment="Left" Margin="399,309,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
+        <CheckBox IsChecked="{Binding CorrectAnswers[2]}" CommandParameter="rb3" Content="Prawidłowa" Name="rb3" HorizontalAlignment="Left" Margin="399,261,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
+        <CheckBox IsChecked="{Binding CorrectAnswers[1]}" CommandParameter="rb2" Content="Prawidłowa" Name="rb2" HorizontalAlignment="Left" Margin="399,206,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.368,0.512" Grid.ColumnSpan="2"/>
+        <CheckBox IsChecked="{Binding CorrectAnswers[0]}" CommandParameter="rb1" Content="Prawidłowa" Name="rb1" HorizontalAlignment="Left" Margin="399,157,0,0" VerticalAlignment="Top"  Grid.ColumnSpan="2"/>
+
+        <Button  Command="{Binding RemoveQuestionCommand}" Content="Usuń pytanie" HorizontalAlignment="Left" Margin="165,367,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+        <TextBox HorizontalAlignment="Left" Margin="221,27,0,0" TextWrapping="Wrap" Text="{Binding Name}" VerticalAlignment="Top" Width="150" Height="22"/>
+        <Button Command="{Binding SaveQuizCommand}" Content="Zapisz" HorizontalAlignment="Left" Margin="48,367,0,0" VerticalAlignment="Top" Width="59" RenderTransformOrigin="0.537,0.072"/>
+
+    </Grid>
+</Page>

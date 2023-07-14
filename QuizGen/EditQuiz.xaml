@@ -1,0 +1,39 @@
+﻿<Page
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:quiz_generator"
+      xmlns:ViewModel="clr-namespace:QuizGen.ViewModel" x:Class="quiz_generator.EditQuiz"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="EditQuiz">
+
+    <Grid DataContext="{Binding}">
+
+        <ListBox d:ItemsSource="{d:SampleData ItemCount=5}" ItemsSource="{Binding Questions}" DisplayMemberPath="Body" SelectedItem="{Binding SelectedQuestion}" Margin="538,69,52,86"/>
+        <Label Content="Pytania:" HorizontalAlignment="Left" Margin="538,31,0,0" VerticalAlignment="Top"/>
+        <Label Content="Edytuj quiz:&#xA;" HorizontalAlignment="Left" Margin="25,22,0,0" VerticalAlignment="Top" FontSize="20"/>
+        <TextBox Text="{Binding Question}"   HorizontalAlignment="Left" Margin="25,110,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="345"/>
+        <TextBox Text="{Binding Answers[0]}" HorizontalAlignment="Left" Margin="25,173,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="345"/>
+        <TextBox Text="{Binding Answers[1]}" HorizontalAlignment="Left" Margin="25,225,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="345"/>
+        <TextBox Text="{Binding Answers[2]}" HorizontalAlignment="Left" Margin="25,278,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="345"/>
+        <Button Command="{Binding EditQuestionCommand}" Content="Aktualizuj zaznaczone pytanie" HorizontalAlignment="Left" Margin="198,370,0,0" VerticalAlignment="Top" Width="186" Height="20"/>
+        <TextBox Text="{Binding Answers[3]}" HorizontalAlignment="Left" Margin="25,326,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="345"/>
+        <Label Content="Pytanie:" HorizontalAlignment="Left" Margin="25,79,0,0" VerticalAlignment="Top"/>
+        <Label Content="Odpowiedź 1:" HorizontalAlignment="Left" Margin="25,147,0,0" VerticalAlignment="Top"/>
+        <Label Content="Odpowiedź 2:" HorizontalAlignment="Left" Margin="25,196,0,0" VerticalAlignment="Top"/>
+        <Label Content="Odpowiedź 3:" HorizontalAlignment="Left" Margin="25,248,0,0" VerticalAlignment="Top"/>
+        <Label Content="Odpowiedź 4:" HorizontalAlignment="Left" Margin="25,300,0,0" VerticalAlignment="Top"/>
+        <CheckBox IsChecked="{Binding CorrectAnswers[3]}" CommandParameter="rb4" Content="Prawidłowa" HorizontalAlignment="Left" Margin="400,328,0,0" VerticalAlignment="Top"/>
+        <CheckBox IsChecked="{Binding CorrectAnswers[2]}" CommandParameter="rb3" Content="Prawidłowa" HorizontalAlignment="Left" Margin="400,280,0,0" VerticalAlignment="Top"/>
+        <CheckBox IsChecked="{Binding CorrectAnswers[1]}" CommandParameter="rb2" Content="Prawidłowa" HorizontalAlignment="Left" Margin="400,225,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.368,0.512"/>
+        <CheckBox IsChecked="{Binding CorrectAnswers[0]}" CommandParameter="rb1" Content="Prawidłowa" HorizontalAlignment="Left" Margin="400,176,0,0" VerticalAlignment="Top"/>
+        <Button Command="{Binding AddQuestionCommand}" Content="Dodaj nowe pytanie" HorizontalAlignment="Left" Margin="25,370,0,0" VerticalAlignment="Top" Width="158"/>
+        <Button Command="{Binding RemoveQuestionCommand}" Content="Usuń pytanie" HorizontalAlignment="Left" Margin="560,375,0,0" VerticalAlignment="Top" Width="166"/>
+        <Button Command="{Binding RemoveQuizCommand}" Content="Usuń quiz" HorizontalAlignment="Left" Margin="700,17,0,0" VerticalAlignment="Top" Height="27" Width="79"/>
+        <Button Command="{Binding BackToMainWindowCommand}" Content="Wróć" HorizontalAlignment="Left" Margin="19,410,0,0" VerticalAlignment="Top" Width="47"/>
+        <Label Content="{Binding Name}" HorizontalAlignment="Left" Margin="141,25,0,0" VerticalAlignment="Top" FontSize="18"/>
+
+    </Grid>
+</Page>

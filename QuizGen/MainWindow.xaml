@@ -1,0 +1,25 @@
+﻿<Window
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+    xmlns:local="clr-namespace:quiz_generator"
+    xmlns:ViewModel="clr-namespace:QuizGen.ViewModel" x:Class="quiz_generator.MainWindow"
+    mc:Ignorable="d"
+    Title="Generator quizów" Height="500" Width="800" ResizeMode="NoResize">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="95*"/>
+            <ColumnDefinition Width="302*"/>
+            <ColumnDefinition Width="3*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.DataContext>
+            <ViewModel:MainWindow/>
+        </Grid.DataContext>
+        <Button x:Name="addQuiz" Content="Dodaj nowy quiz" HorizontalAlignment="Left" Margin="124,0,0,0" VerticalAlignment="Center" Height="125" Width="148" Command="{Binding AddQuizCommand}" Grid.ColumnSpan="2" />
+        <Label Content="Quizy" HorizontalAlignment="Left" Margin="251,18,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+        <Button Command="{Binding EditQuizCommand}" x:Name="editQuiz" Content="Edytuj wybrany quiz" HorizontalAlignment="Left" Margin="256,416,0,0" VerticalAlignment="Top" Width="308" Grid.Column="1"/>
+        <ListBox ItemsSource="{Binding Quizzes}"  SelectedItem="{Binding SelectedQuiz}" DisplayMemberPath="Name" Margin="251,49,35,86" Grid.Column="1"/>
+    </Grid>
+</Window>
